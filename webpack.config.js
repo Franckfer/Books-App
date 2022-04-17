@@ -3,15 +3,15 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
-console.log(devMode);
+
 module.exports = {
 
     entry: './client/app.js',
+    mode: 'development',
     output: {
         path: path.join(__dirname, 'server/public'),
         filename:'js/bundle.js'
     }, 
-    mode: 'development',
     module: {
         rules: [
             {
@@ -28,6 +28,7 @@ module.exports = {
             template: './client/index.html',
             minify: {
                 collapseWhitespace: true,
+                removeComments: true,
                 removeRedundantAttributes: true,
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
